@@ -12,7 +12,7 @@ class PageFollower extends Model
     protected $fillable = ['page_id', 'follower_id'];
 
     public function page(){
-        return $this->belongsTo('App\Models\Page', 'page_id');
+        return $this->belongsTo('App\Models\Page', 'page_id')->with('post', 'owner');
     }
 
     public function follower(){

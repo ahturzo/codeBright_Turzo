@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\PersonFollower;
+use App\Models\PageFollower;
 use App\Models\PersonPost;
+use App\Models\PagePost;
 
 class PersonController extends Controller
 {
@@ -48,5 +50,12 @@ class PersonController extends Controller
             ]);
             return response()->json(['message' => 'Post added successfully'], 200);
         }
+    }
+
+    public function feed()
+    {
+        $page_post = PageFollower::where('follower_id', auth()->user()->id)->with('page')->get();
+        $person_post = PersonFollower::where('follower_id', auth()->user()->id)->with('person')->get();
+        return response()->json(['page_post' => $page_post, 'person_post' => $person_post], 200);
     }
 }

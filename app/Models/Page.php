@@ -15,4 +15,9 @@ class Page extends Model
     {
         return $this->belongsTo('App\Models\User', 'owner_id');
     }
+
+    public function post()
+    {
+        return $this->hasMany('App\Models\PagePost', 'page_id');
+    }
 }

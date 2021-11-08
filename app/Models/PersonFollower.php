@@ -12,7 +12,7 @@ class PersonFollower extends Model
     protected $fillable = ['person_id', 'follower_id'];
 
     public function person(){
-        return $this->belongsTo('App\Models\User', 'person_id');
+        return $this->belongsTo('App\Models\User', 'person_id')->with('post');
     }
 
     public function follower(){

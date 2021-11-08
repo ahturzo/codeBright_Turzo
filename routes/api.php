@@ -55,4 +55,5 @@ Route::group([
     'prefix' => 'person'
 ], function(){
     Route::post('attach-post', 'PersonController@attachPost');
+    Route::get('feed', 'PersonController@feed');
 });
