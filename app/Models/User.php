@@ -53,4 +53,9 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
+
+    public function pageOwnership()
+    {
+        return $this->belongsTo('App\Models\Page', 'owner_id');
+    }
 }
